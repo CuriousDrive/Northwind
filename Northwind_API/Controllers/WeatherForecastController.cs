@@ -24,16 +24,12 @@ namespace Northwind_API.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<WeatherForecast> Get()
+        public IEnumerable<Northwind_API.Models.Customer> Get()
         {
-            var rng = new Random();
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+            using(var _dbContext = new Northwind_API.Models.NorthwindContext())
             {
-                Date = DateTime.Now.AddDays(index),
-                TemperatureC = rng.Next(-20, 55),
-                Summary = Summaries[rng.Next(Summaries.Length)]
-            })
-            .ToArray();
+                return _dbContext.Customers.ToList();
+            }
         }
     }
 }
