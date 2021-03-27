@@ -1,0 +1,9 @@
+<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.3">
+
+<PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="5.0.3" />
+
+<PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="5.0.0-alpha.2" />
+
+dotnet ef dbcontext scaffold "Server=localhost;Database=Northwind;Uid=root;Pwd=root" Pomelo.EntityFrameworkCore.MySql -o MySQLModels
+
+dotnet ef dbcontext scaffold "Data Source=.\sqlexpress;Initial Catalog=Northwind;User ID=sa;Password=root" Microsoft.EntityFrameworkCore.SqlServer -o SQLServerModels

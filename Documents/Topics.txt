@@ -1,0 +1,70 @@
+1. Reverse Engineering
+    => MySql
+    => SQL Server
+
+2. dbcontext scaffold command
+    => Exploring Different Parameters 
+    => Modifying Database Columns
+    => Configuration and Initilization
+    => Create and drop APIs
+
+3. Controllers
+    => Creating Controllers from scratch
+    => Creating from command line
+    => Creating from Visual Studio
+
+4. Query Data
+    => Client vs Server evaluations
+    => Tracking vs no-Tracking
+    => Loading Related Data 
+        => Eager Loading
+        => Explicit Loading
+        => Lazy Loading
+        => Related Data & Serialization
+    => Split Queries
+    => Complex Query Operators
+    => Raw SQL Queries
+    => Database Functions
+    => User-defined functions mapping
+    => Global Query Filters
+    => Query Tags
+    => Comparisons with null values in the Queries
+    => How Queries Work
+
+5. Save Data
+    => Basic Save
+    => Related Data
+    => Cascade Delete
+    => Concurrency Conflicts
+    => Transactions
+    => Disconnected Entities
+
+6. Tracking
+    => Explicit Tracking Entities
+    => Accessing Tracked Entities
+    => Chaging foreign keys & navigations
+    => Identity Resolution
+    => Additional Change & tracking features
+    => Change tracker debugging
+
+7. Logging
+    => Simple Logging
+    => Microsoft.Extensions.Logging
+    => Events
+    => Interceptors
+    => Diagnostic Listners
+    => Event Counters
+
+8. Performance
+    => Performance diagnosis
+    => Efficient querying
+    => Efficient updating
+    => Modeling for performance
+    => Advanced
+
+9. Testing
+    => Testing code that uses EF Core
+    => EF Core testing sample
+    => Sharing databases between tests
+    => Test with SQLite
+    => Test with InMemory
