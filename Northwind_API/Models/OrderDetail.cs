@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 #nullable disable
 
-namespace Northwind_API.Models
+namespace Northwind.Models
 {
     public partial class OrderDetail
     {

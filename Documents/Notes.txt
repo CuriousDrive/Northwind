@@ -1,9 +1,45 @@
-<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.3">
+Any database => 
+    Microsoft.EntityFrameworkCore.Design
+MySQL =>
+    Microsoft.EntityFrameworkCore.Relational
+    Pomelo.EntityFrameworkCore.MySql
+SQL =>
+    Microsoft.EntityFrameworkCore.SqlServer
 
-<PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="5.0.3" />
+dbcontext command for MySQL Database =>
+    dotnet ef dbcontext scaffold 
+    "Server=localhost;Database=Northwind;Uid=root;Pwd=root" 
+    Pomelo.EntityFrameworkCore.MySql 
+    --output-dir Models
 
-<PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="5.0.0-alpha.2" />
+dbcontext command for SQL Server Database =>
+    dotnet ef dbcontext scaffold 
+    "Data Source=.\sqlexpress;Initial Catalog=Northwind;User ID=sa;Password=root" 
+    Microsoft.EntityFrameworkCore.SqlServer 
+    --output-dir Models
 
-dotnet ef dbcontext scaffold "Server=localhost;Database=Northwind;Uid=root;Pwd=root" Pomelo.EntityFrameworkCore.MySql -o MySQLModels
+dotnet ef dbcontext scaffold "Server=localhost;Database=Northwind;Uid=root;Pwd=root" Pomelo.EntityFrameworkCore.MySql -o Models
+https://docs.microsoft.com/en-us/ef/core/cli/dotnet#dotnet-ef-dbcontext-scaffold
 
-dotnet ef dbcontext scaffold "Data Source=.\sqlexpress;Initial Catalog=Northwind;User ID=sa;Password=root" Microsoft.EntityFrameworkCore.SqlServer -o SQLServerModels
+=> using --output-dir => takes connection string as paremeter
+dotnet ef dbcontext scaffold Name=Northwind_MySQL Pomelo.EntityFrameworkCore.MySql --output-dir Models
+
+=> using --context-dir => to use different folder for contexts 
+dotnet ef dbcontext scaffold Name=Northwind_MySQL Pomelo.EntityFrameworkCore.MySql --output-dir Models --context-dir Contexts 
+
+=>using --namespace & --context-namespace => assign different namespace for context class
+dotnet ef dbcontext scaffold Name=Northwind_MySQL Pomelo.EntityFrameworkCore.MySql --output-dir Models --context-dir Contexts --namespace Northwind.Models --context-namespace Northwind.Contexts
+
+=>using --schemas & --table => takes schemas & table as parameters => EF Core Power Tools
+dotnet ef dbcontext scaffold Name=Northwind_MySQL Pomelo.EntityFrameworkCore.MySql --output-dir Models --context-dir Contexts --namespace Northwind.Models --context-namespace Northwind.Contexts --table employees --table orders --table order details -f = X
+dotnet ef dbcontext scaffold Name=Northwind_MySQL Pomelo.EntityFrameworkCore.MySql --output-dir Models --context-dir Contexts --namespace Northwind.Models --context-namespace Northwind.Contexts --table employees --table orders -f 
+
+=> using --no-pluralize	=> this takes the database table names for entitties
+dotnet ef dbcontext scaffold Name=Northwind_MySQL Pomelo.EntityFrameworkCore.MySql --output-dir Models --context-dir Contexts --namespace Northwind.Models --context-namespace Northwind.Contexts -f --no-pluralize	
+
+=> using --use-database-names=> this takes literally same table names and column names from the database
+dotnet ef dbcontext scaffold Name=Northwind_MySQL Pomelo.EntityFrameworkCore.MySql --output-dir Models --context-dir Contexts --namespace Northwind.Models --context-namespace Northwind.Contexts -f --use-database-names
+
+=> using --no-onconfiguring => you will have to manually configure the connection in this case
+dotnet ef dbcontext scaffold Name=Northwind_MySQL Pomelo.EntityFrameworkCore.MySql --output-dir Models --context-dir Contexts --namespace Northwind.Models --context-namespace Northwind.Contexts -f --no-onconfiguring
+

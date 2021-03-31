@@ -24,9 +24,9 @@ namespace Northwind_API.Controllers
         }
 
         [HttpGet("GetCustomers")]
-        public IEnumerable<Models.Customer> GetCustomers()
+        public IEnumerable<Northwind.Models.Customer> GetCustomers()
         {
-            using(var dbContext = new Models.NorthwindContext())
+            using(var dbContext = new Northwind.Contexts.NorthwindContext())
             {
                 return dbContext.Customers.ToList();
             }
