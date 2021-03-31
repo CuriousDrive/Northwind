@@ -23,13 +23,13 @@ namespace Northwind_API.Controllers
             _logger = logger;
         }
 
-        [HttpGet("GetCustomers")]
-        public IEnumerable<Northwind.Models.Customer> GetCustomers()
-        {
-            using(var dbContext = new Northwind.Contexts.NorthwindContext())
-            {
-                return dbContext.Customers.ToList();
-            }
-        }
+        // [HttpGet("GetCustomers")]
+        // public IEnumerable<Northwind.Models.Customer> GetCustomers()
+        // {
+        //     using(var dbContext = new Northwind.Contexts.NorthwindContext())
+        //     {
+        //         return dbContext.Customers.ToList();
+        //     }
+        // }
     }
 }

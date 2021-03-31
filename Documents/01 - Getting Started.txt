@@ -1,0 +1,24 @@
+Any database => 
+    Microsoft.EntityFrameworkCore.Design
+MySQL =>
+    Microsoft.EntityFrameworkCore.Relational
+    Pomelo.EntityFrameworkCore.MySql
+SQL =>
+    Microsoft.EntityFrameworkCore.SqlServer
+
+dbcontext command for MySQL Database =>
+    dotnet ef dbcontext scaffold 
+    "Server=localhost;Database=Northwind;Uid=root;Pwd=root" 
+    Pomelo.EntityFrameworkCore.MySql 
+    --output-dir Models
+
+dbcontext command for SQL Server Database =>
+    dotnet ef dbcontext scaffold 
+    "Data Source=.\sqlexpress;Initial Catalog=Northwind;User ID=sa;Password=root" 
+    Microsoft.EntityFrameworkCore.SqlServer 
+    --output-dir Models
+
+using(var dbContext = new Northwind.Contexts.NorthwindContext())
+{
+    return dbContext.Customers.ToList();
+}
