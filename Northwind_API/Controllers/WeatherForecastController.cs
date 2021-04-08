@@ -23,13 +23,11 @@ namespace Northwind_API.Controllers
             _logger = logger;
         }
 
-        // [HttpGet("GetCustomers")]
-        // public IEnumerable<Northwind.Models.Customer> GetCustomers()
-        // {
-        //     using(var dbContext = new Northwind.Contexts.NorthwindContext())
-        //     {
-        //         return dbContext.Customers.ToList();
-        //     }
-        // }
+        [HttpGet("GetTenMostExpensiveProductsResult")]
+        public async Task<IEnumerable<Northwind_API.Models.TenMostExpensiveProductsResult>> GetTenMostExpensiveProductsResult()
+        {
+            var proc = new Northwind_API.Data.NorthwindContextProcedures(new Data.NorthwindContext());
+            return await proc.TenMostExpensiveProductsAsync();
+        }
     }
 }
