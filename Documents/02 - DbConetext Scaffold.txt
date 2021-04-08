@@ -24,3 +24,5 @@ dotnet ef dbcontext scaffold Name=Northwind_MySQL Pomelo.EntityFrameworkCore.MyS
 dotnet ef dbcontext scaffold Name=Northwind_MySQL Pomelo.EntityFrameworkCore.MySql --output-dir Models --context-dir Contexts --namespace Northwind.Models --context-namespace Northwind.Contexts -f --no-onconfiguring
 
 EF Core Power Tools
+
+Is it possible to keep the Stored Procedures, Views etc in different folder while scaffolding?
