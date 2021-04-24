@@ -6,11 +6,13 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Northwind.Data;
 
 namespace Northwind_API
 {
@@ -28,6 +30,10 @@ namespace Northwind_API
         {
 
             services.AddControllers();
+            
+            services.AddDbContext<NorthwindContext>(
+                options => options.UseMySql(Configuration.GetConnectionString("Northwind_MySQL"), Microsoft.EntityFrameworkCore.ServerVersion.FromString("8.0.23-mysql"))
+            );
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Northwind_API", Version = "v1" });

@@ -12,3 +12,14 @@ dotnet aspnet-codegenerator controller \
     -outDir Controllers
 
 I would also like to show how this could be done from Visual Studio 2019
+
+---------------------------------------------------------
+
+first you will have to inject the service
+
+services.AddDbContext<NorthwindContext>
+(
+    options => options.UseMySql(Configuration.GetConnectionString("Northwind_MySQL"), Microsoft.EntityFrameworkCore.ServerVersion.FromString("8.0.23-mysql"))
+);
+
+dotnet aspnet-codegenerator controller -name EmployeeController -api -async -m Northwind.Models.Employee -dc Northwind.Data.NorthwindContext -namespace Northwind_API.Controllers -outDir Controllers

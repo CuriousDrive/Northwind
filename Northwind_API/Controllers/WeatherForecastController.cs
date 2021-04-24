@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Northwind.Data;
 
 namespace Northwind_API.Controllers
 {
@@ -18,15 +19,18 @@ namespace Northwind_API.Controllers
 
         private readonly ILogger<WeatherForecastController> _logger;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        public NorthwindContext _context { get; }
+
+        public WeatherForecastController(ILogger<WeatherForecastController> logger, NorthwindContext context)
         {
             _logger = logger;
+            _context = context;
         }
 
         [HttpGet("Customers")]
-        public async Task<string> GetCustomers()
+        public string GetCustomers()
         {
-            return await Task.FromResult("");
+            return _context.Employees.FirstOrDefault().FirstName;
         }
     }
 }
