@@ -23,11 +23,10 @@ namespace Northwind_API.Controllers
             _logger = logger;
         }
 
-        [HttpGet("GetTenMostExpensiveProductsResult")]
-        public async Task<IEnumerable<Northwind_API.Models.TenMostExpensiveProductsResult>> GetTenMostExpensiveProductsResult()
+        [HttpGet("Customers")]
+        public async Task<string> GetCustomers()
         {
-            var proc = new Northwind_API.Data.NorthwindContextProcedures(new Data.NorthwindContext());
-            return await proc.TenMostExpensiveProductsAsync();
+            return await Task.FromResult("");
         }
     }
 }

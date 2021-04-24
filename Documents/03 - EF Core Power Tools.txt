@@ -1,1 +1,5 @@
 EF Core Power Tools
+I used this tool and it looks like you can provide the same options that you can provide
+from the terminal 
+On top of that it also generates some classes which could be helpful in calling
+Stored Procedures

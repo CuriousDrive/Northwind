@@ -8,6 +8,8 @@
     => Configuration and Initilization
     => Create and drop APIs
 
+2.5 => EF Core Tools
+
 3. Controllers
     => Creating Controllers from scratch
     => Creating from command line

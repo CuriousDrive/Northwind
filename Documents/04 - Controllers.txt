@@ -1,0 +1,14 @@
+Need to find how to create cotrollers from the commnad
+
+you might need to update the tool but this is what you can use while creating controllers
+
+dotnet aspnet-codegenerator controller \
+    -name LogsController \
+    -api \
+    -async \
+    -m BlazingChat.Server.Models.Log \
+    -dc BlazingChat.Server.Models.BlazingChatContext \
+    -namespace BlazingChat.Server.Controllers \
+    -outDir Controllers
+
+I would also like to show how this could be done from Visual Studio 2019
