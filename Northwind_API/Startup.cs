@@ -32,7 +32,11 @@ namespace Northwind_API
             services.AddControllers();
             
             services.AddDbContext<NorthwindContext>(
-                options => options.UseMySql(Configuration.GetConnectionString("Northwind_MySQL"), Microsoft.EntityFrameworkCore.ServerVersion.FromString("8.0.23-mysql"))
+                options =>
+                {
+                    options.UseMySql(Configuration.GetConnectionString("Northwind_MySQL"), Microsoft.EntityFrameworkCore.ServerVersion.FromString("8.0.23-mysql"));
+                    options.LogTo(Console.WriteLine, LogLevel.Information);
+                }
             );
             services.AddSwaggerGen(c =>
             {
