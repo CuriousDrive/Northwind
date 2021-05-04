@@ -27,6 +27,41 @@ namespace Northwind_API.Controllers
         {
             return await _context.Employees.ToListAsync();
         }
+        
+        // GET: api/Employee
+        [HttpGet("/GetEmployeesUsingEagerLoading")]
+        public async Task<ActionResult<IEnumerable<Employee>>> GetEmployeesUsingEagerLoading()
+        {
+            return await _context.Employees.ToListAsync();
+        }
+
+        // GET: api/Employee
+        [HttpGet("/GetEmployeesUsingQueryExpression")]
+        public async Task<ActionResult<IEnumerable<String>>> GetEmployeesUsingQueryExpression()
+        {
+            //Grouping is little tricky 
+            // var employees = (from emp in _context.Employees.ToList()
+            //                  where emp.EmployeeId > 5 || emp.FirstName.Length > 5
+            //                  group emp by emp.Title);
+
+            // var results = new List<string>();
+
+            // foreach (var emp in employees.ToList())
+            // {
+            //     results.Add($"Employee Title : {emp.Key} & Count : {emp.Count()}");
+            // }
+
+            // return await Task.FromResult(results);
+
+            //and this is how you write joins in LINQ Query expression
+            var results = await (
+                            from emp in _context.Employees
+                            join ord in _context.Orders on emp.EmployeeId equals ord.EmployeeId 
+                            select new String($"{emp.EmployeeId} has order {ord.ShipName}")
+                            ).ToListAsync();
+
+            return results;
+        }
 
         // GET: api/Employee/5
         [HttpGet("{id}")]

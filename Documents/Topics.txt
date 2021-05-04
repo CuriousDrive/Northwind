@@ -1,28 +1,31 @@
 1. Reverse Engineering
-    => MySql
-    => SQL Server
+    => MySql -> DONE
+    => SQL Server -> DONE
 
 2. dbcontext scaffold command
-    => Exploring Different Parameters 
-    => Modifying Database Columns
-    => Configuration and Initilization
+    => Exploring Different Parameters -> DONE
+    => Modifying Database Columns -> DONE
+    => Configuration and Initialization -> DONE
     => Create and drop APIs
 
 2.5 => EF Core Tools
+    => Check out GUI for Visual Studio -> DONE
 
 3. Controllers
-    => Creating Controllers from scratch
-    => Creating from command line
-    => Creating from Visual Studio
+    => Creating Controllers from scratch -> DONE
+    => Creating from command line -> DONE
+    => Creating from Visual Studio -> DONE
 
 4. Query Data
-    => Client vs Server evaluations
-    => Tracking vs no-Tracking
     => Loading Related Data 
+        => Overview
+        => Link Query Expression
         => Eager Loading
         => Explicit Loading
         => Lazy Loading
         => Related Data & Serialization
+    => Client vs Server evaluations
+    => Tracking vs no-Tracking
     => Split Queries
     => Complex Query Operators
     => Raw SQL Queries

@@ -1,0 +1,11 @@
+=> Overview
+    => Writing simple queries using LINQ
+=> Link Query Expression
+    https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/basic-linq-query-operations
+    => I was managed to write most of the queries except the group by query
+    => You need to convert you DbSet<> into List<> in order to use GroupBy
+
+=> Eager Loading
+=> Explicit Loading
+=> Lazy Loading
+=> Related Data & Serialization
