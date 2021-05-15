@@ -22,7 +22,7 @@ namespace Northwind.Data
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<Employee> Employees { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
-        public virtual DbSet<OrderDetail> OrderDetails { get; set; }
+        public virtual DbSet<Orderdetail> Orderdetails { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<Shipper> Shippers { get; set; }
         public virtual DbSet<Supplier> Suppliers { get; set; }
@@ -201,9 +201,9 @@ namespace Northwind.Data
             {
                 entity.ToTable("orders");
 
-                entity.HasIndex(e => e.CustomerId, "CustomerID");
+                entity.HasIndex(e => e.CustomerId, "FK_CustomersOrders");
 
-                entity.HasIndex(e => e.EmployeeId, "EmployeeID");
+                entity.HasIndex(e => e.EmployeeId, "FK_EmployeesOrders");
 
                 entity.HasIndex(e => e.OrderDate, "OrderDate");
 
@@ -262,17 +262,18 @@ namespace Northwind.Data
                 entity.Property(e => e.ShippedDate).HasColumnType("datetime");
             });
 
-            modelBuilder.Entity<OrderDetail>(entity =>
+            modelBuilder.Entity<Orderdetail>(entity =>
             {
-                entity.HasKey(e => new { e.OrderId, e.ProductId })
-                    .HasName("PRIMARY")
-                    .HasAnnotation("MySql:IndexPrefixLength", new[] { 0, 0 });
+                entity.HasKey(e => e.OrderDetailsId)
+                    .HasName("PRIMARY");
 
-                entity.ToTable("order details");
+                entity.ToTable("orderdetails");
 
-                entity.HasIndex(e => e.OrderId, "OrderID");
+                entity.HasIndex(e => e.OrderId, "FK_OrdersOrderDetails");
 
-                entity.HasIndex(e => e.ProductId, "ProductID");
+                entity.HasIndex(e => e.ProductId, "FK_ProductsOrderDetails");
+
+                entity.Property(e => e.OrderDetailsId).HasColumnName("OrderDetailsID");
 
                 entity.Property(e => e.OrderId).HasColumnName("OrderID");
 
@@ -287,11 +288,9 @@ namespace Northwind.Data
             {
                 entity.ToTable("products");
 
-                entity.HasIndex(e => e.CategoryId, "CategoryID");
+                entity.HasIndex(e => e.CategoryId, "FK_ProductsCategories");
 
-                entity.HasIndex(e => e.ProductName, "ProductName");
-
-                entity.HasIndex(e => e.SupplierId, "SupplierID");
+                entity.HasIndex(e => e.SupplierId, "FK_ProductsSuppliers");
 
                 entity.Property(e => e.ProductId).HasColumnName("ProductID");
 
