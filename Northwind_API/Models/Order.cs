@@ -7,6 +7,11 @@ namespace Northwind.Models
 {
     public partial class Order
     {
+        public Order()
+        {
+            Orderdetails = new HashSet<Orderdetail>();
+        }
+
         public int OrderId { get; set; }
         public string CustomerId { get; set; }
         public int? EmployeeId { get; set; }
@@ -21,5 +26,9 @@ namespace Northwind.Models
         public string ShipRegion { get; set; }
         public string ShipPostalCode { get; set; }
         public string ShipCountry { get; set; }
+
+        public virtual Customer Customer { get; set; }
+        public virtual Employee Employee { get; set; }
+        public virtual ICollection<Orderdetail> Orderdetails { get; set; }
     }
 }

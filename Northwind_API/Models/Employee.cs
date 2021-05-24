@@ -7,6 +7,11 @@ namespace Northwind.Models
 {
     public partial class Employee
     {
+        public Employee()
+        {
+            Orders = new HashSet<Order>();
+        }
+
         public int EmployeeId { get; set; }
         public string LastName { get; set; }
         public string FirstName { get; set; }
@@ -24,5 +29,7 @@ namespace Northwind.Models
         public byte[] Photo { get; set; }
         public string Notes { get; set; }
         public int? ReportsTo { get; set; }
+
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }

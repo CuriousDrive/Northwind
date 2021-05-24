@@ -25,7 +25,7 @@ CREATE TABLE `categories` (
   `Picture` longblob,
   PRIMARY KEY (`CategoryID`),
   UNIQUE KEY `CategoryName` (`CategoryName`)
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for `customers`
@@ -50,7 +50,7 @@ CREATE TABLE `customers` (
   KEY `CompanyName` (`CompanyName`),
   KEY `PostalCode` (`PostalCode`),
   KEY `Region` (`Region`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for `employees`
@@ -77,7 +77,7 @@ CREATE TABLE `employees` (
   PRIMARY KEY (`EmployeeID`),
   KEY `LastName` (`LastName`),
   KEY `PostalCode` (`PostalCode`)
-) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for `shippers`
@@ -88,7 +88,7 @@ CREATE TABLE `shippers` (
   `CompanyName` varchar(40) NOT NULL,
   `Phone` varchar(24) DEFAULT NULL,
   PRIMARY KEY (`ShipperID`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for `suppliers`
@@ -110,7 +110,7 @@ CREATE TABLE `suppliers` (
   PRIMARY KEY (`SupplierID`),
   KEY `CompanyName` (`CompanyName`),
   KEY `PostalCode` (`PostalCode`)
-) ENGINE=MyISAM AUTO_INCREMENT=30 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for `products`
@@ -130,7 +130,7 @@ CREATE TABLE `products` (
   PRIMARY KEY (`ProductID`),
   CONSTRAINT FK_ProductsSuppliers FOREIGN KEY (SupplierID) REFERENCES suppliers(SupplierID),
   CONSTRAINT FK_ProductsCategories FOREIGN KEY (CategoryID) REFERENCES categories(CategoryID)
-) ENGINE=MyISAM AUTO_INCREMENT=78 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=78 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for `orders`
@@ -157,7 +157,7 @@ CREATE TABLE `orders` (
   KEY `OrderDate` (`OrderDate`),
   KEY `ShippedDate` (`ShippedDate`),
   KEY `ShipPostalCode` (`ShipPostalCode`)
-) ENGINE=MyISAM AUTO_INCREMENT=11078 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11078 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for `order details`
@@ -172,8 +172,8 @@ CREATE TABLE `orderdetails` (
   `Discount` float NOT NULL DEFAULT '0',
   PRIMARY KEY (`OrderDetailsID`),
   CONSTRAINT FK_OrdersOrderDetails FOREIGN KEY (OrderID) REFERENCES orders(OrderID),
-  CONSTRAINT FK_ProductsOrderDetails FOREIGN KEY (ProductID) REFERENCES suppliers(ProductID)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  CONSTRAINT FK_ProductsOrderDetails FOREIGN KEY (ProductID) REFERENCES products(ProductID)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of categories

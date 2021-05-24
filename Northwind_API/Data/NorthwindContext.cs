@@ -40,14 +40,11 @@ namespace Northwind.Data
 
                 entity.Property(e => e.CategoryName)
                     .IsRequired()
-                    .HasColumnType("varchar(15)")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
+                    .HasMaxLength(15);
 
-                entity.Property(e => e.Description)
-                    .HasColumnType("longtext")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
+                entity.Property(e => e.Description).HasColumnType("longtext");
+
+                entity.Property(e => e.Picture).HasColumnType("longblob");
             });
 
             modelBuilder.Entity<Customer>(entity =>
@@ -63,61 +60,34 @@ namespace Northwind.Data
                 entity.HasIndex(e => e.Region, "Region");
 
                 entity.Property(e => e.CustomerId)
-                    .HasColumnType("varchar(5)")
-                    .HasColumnName("CustomerID")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
+                    .HasMaxLength(5)
+                    .HasColumnName("CustomerID");
 
-                entity.Property(e => e.Address)
-                    .HasColumnType("varchar(60)")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
+                entity.Property(e => e.Address).HasMaxLength(60);
 
-                entity.Property(e => e.City)
-                    .HasColumnType("varchar(15)")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
+                entity.Property(e => e.City).HasMaxLength(15);
 
                 entity.Property(e => e.CompanyName)
                     .IsRequired()
-                    .HasColumnType("varchar(40)")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
+                    .HasMaxLength(40);
 
-                entity.Property(e => e.ContactName)
-                    .HasColumnType("varchar(30)")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
+                entity.Property(e => e.ContactName).HasMaxLength(30);
 
-                entity.Property(e => e.ContactTitle)
-                    .HasColumnType("varchar(30)")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
+                entity.Property(e => e.ContactTitle).HasMaxLength(30);
 
-                entity.Property(e => e.Country)
-                    .HasColumnType("varchar(15)")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
+                entity.Property(e => e.Country).HasMaxLength(15);
 
-                entity.Property(e => e.Fax)
-                    .HasColumnType("varchar(24)")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
+                entity.Property(e => e.Fax).HasMaxLength(24);
 
-                entity.Property(e => e.Phone)
-                    .HasColumnType("varchar(24)")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
+                entity.Property(e => e.Image).HasColumnType("longblob");
 
-                entity.Property(e => e.PostalCode)
-                    .HasColumnType("varchar(10)")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
+                entity.Property(e => e.ImageThumbnail).HasColumnType("longblob");
 
-                entity.Property(e => e.Region)
-                    .HasColumnType("varchar(15)")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
+                entity.Property(e => e.Phone).HasMaxLength(24);
+
+                entity.Property(e => e.PostalCode).HasMaxLength(10);
+
+                entity.Property(e => e.Region).HasMaxLength(15);
             });
 
             modelBuilder.Entity<Employee>(entity =>
@@ -130,71 +100,35 @@ namespace Northwind.Data
 
                 entity.Property(e => e.EmployeeId).HasColumnName("EmployeeID");
 
-                entity.Property(e => e.Address)
-                    .HasColumnType("varchar(60)")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
+                entity.Property(e => e.Address).HasMaxLength(60);
 
-                entity.Property(e => e.BirthDate).HasColumnType("datetime");
+                entity.Property(e => e.City).HasMaxLength(15);
 
-                entity.Property(e => e.City)
-                    .HasColumnType("varchar(15)")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
+                entity.Property(e => e.Country).HasMaxLength(15);
 
-                entity.Property(e => e.Country)
-                    .HasColumnType("varchar(15)")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
-
-                entity.Property(e => e.Extension)
-                    .HasColumnType("varchar(4)")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
+                entity.Property(e => e.Extension).HasMaxLength(4);
 
                 entity.Property(e => e.FirstName)
                     .IsRequired()
-                    .HasColumnType("varchar(10)")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
+                    .HasMaxLength(10);
 
-                entity.Property(e => e.HireDate).HasColumnType("datetime");
-
-                entity.Property(e => e.HomePhone)
-                    .HasColumnType("varchar(24)")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
+                entity.Property(e => e.HomePhone).HasMaxLength(24);
 
                 entity.Property(e => e.LastName)
                     .IsRequired()
-                    .HasColumnType("varchar(20)")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
+                    .HasMaxLength(20);
 
-                entity.Property(e => e.Notes)
-                    .HasColumnType("longtext")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
+                entity.Property(e => e.Notes).HasColumnType("longtext");
 
-                entity.Property(e => e.PostalCode)
-                    .HasColumnType("varchar(10)")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
+                entity.Property(e => e.Photo).HasColumnType("longblob");
 
-                entity.Property(e => e.Region)
-                    .HasColumnType("varchar(15)")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
+                entity.Property(e => e.PostalCode).HasMaxLength(10);
 
-                entity.Property(e => e.Title)
-                    .HasColumnType("varchar(30)")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
+                entity.Property(e => e.Region).HasMaxLength(15);
 
-                entity.Property(e => e.TitleOfCourtesy)
-                    .HasColumnType("varchar(25)")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
+                entity.Property(e => e.Title).HasMaxLength(30);
+
+                entity.Property(e => e.TitleOfCourtesy).HasMaxLength(25);
             });
 
             modelBuilder.Entity<Order>(entity =>
@@ -214,52 +148,36 @@ namespace Northwind.Data
                 entity.Property(e => e.OrderId).HasColumnName("OrderID");
 
                 entity.Property(e => e.CustomerId)
-                    .HasColumnType("varchar(5)")
-                    .HasColumnName("CustomerID")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
+                    .HasMaxLength(5)
+                    .HasColumnName("CustomerID");
 
                 entity.Property(e => e.EmployeeId).HasColumnName("EmployeeID");
 
                 entity.Property(e => e.Freight)
-                    .HasPrecision(19, 4)
+                    .HasColumnType("decimal(19,4)")
                     .HasDefaultValueSql("'0.0000'");
 
-                entity.Property(e => e.OrderDate).HasColumnType("datetime");
+                entity.Property(e => e.ShipAddress).HasMaxLength(60);
 
-                entity.Property(e => e.RequiredDate).HasColumnType("datetime");
+                entity.Property(e => e.ShipCity).HasMaxLength(15);
 
-                entity.Property(e => e.ShipAddress)
-                    .HasColumnType("varchar(60)")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
+                entity.Property(e => e.ShipCountry).HasMaxLength(15);
 
-                entity.Property(e => e.ShipCity)
-                    .HasColumnType("varchar(15)")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
+                entity.Property(e => e.ShipName).HasMaxLength(40);
 
-                entity.Property(e => e.ShipCountry)
-                    .HasColumnType("varchar(15)")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
+                entity.Property(e => e.ShipPostalCode).HasMaxLength(10);
 
-                entity.Property(e => e.ShipName)
-                    .HasColumnType("varchar(40)")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
+                entity.Property(e => e.ShipRegion).HasMaxLength(15);
 
-                entity.Property(e => e.ShipPostalCode)
-                    .HasColumnType("varchar(10)")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
+                entity.HasOne(d => d.Customer)
+                    .WithMany(p => p.Orders)
+                    .HasForeignKey(d => d.CustomerId)
+                    .HasConstraintName("FK_CustomersOrders");
 
-                entity.Property(e => e.ShipRegion)
-                    .HasColumnType("varchar(15)")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
-
-                entity.Property(e => e.ShippedDate).HasColumnType("datetime");
+                entity.HasOne(d => d.Employee)
+                    .WithMany(p => p.Orders)
+                    .HasForeignKey(d => d.EmployeeId)
+                    .HasConstraintName("FK_EmployeesOrders");
             });
 
             modelBuilder.Entity<Orderdetail>(entity =>
@@ -281,7 +199,19 @@ namespace Northwind.Data
 
                 entity.Property(e => e.Quantity).HasDefaultValueSql("'1'");
 
-                entity.Property(e => e.UnitPrice).HasPrecision(19, 4);
+                entity.Property(e => e.UnitPrice).HasColumnType("decimal(19,4)");
+
+                entity.HasOne(d => d.Order)
+                    .WithMany(p => p.Orderdetails)
+                    .HasForeignKey(d => d.OrderId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_OrdersOrderDetails");
+
+                entity.HasOne(d => d.Product)
+                    .WithMany(p => p.Orderdetails)
+                    .HasForeignKey(d => d.ProductId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_ProductsOrderDetails");
             });
 
             modelBuilder.Entity<Product>(entity =>
@@ -300,26 +230,31 @@ namespace Northwind.Data
 
                 entity.Property(e => e.ProductName)
                     .IsRequired()
-                    .HasColumnType("varchar(40)")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
+                    .HasMaxLength(40);
 
-                entity.Property(e => e.QuantityPerUnit)
-                    .HasColumnType("varchar(20)")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
+                entity.Property(e => e.QuantityPerUnit).HasMaxLength(20);
 
                 entity.Property(e => e.ReorderLevel).HasDefaultValueSql("'0'");
 
                 entity.Property(e => e.SupplierId).HasColumnName("SupplierID");
 
                 entity.Property(e => e.UnitPrice)
-                    .HasPrecision(19, 4)
+                    .HasColumnType("decimal(19,4)")
                     .HasDefaultValueSql("'0.0000'");
 
                 entity.Property(e => e.UnitsInStock).HasDefaultValueSql("'0'");
 
                 entity.Property(e => e.UnitsOnOrder).HasDefaultValueSql("'0'");
+
+                entity.HasOne(d => d.Category)
+                    .WithMany(p => p.Products)
+                    .HasForeignKey(d => d.CategoryId)
+                    .HasConstraintName("FK_ProductsCategories");
+
+                entity.HasOne(d => d.Supplier)
+                    .WithMany(p => p.Products)
+                    .HasForeignKey(d => d.SupplierId)
+                    .HasConstraintName("FK_ProductsSuppliers");
             });
 
             modelBuilder.Entity<Shipper>(entity =>
@@ -330,14 +265,9 @@ namespace Northwind.Data
 
                 entity.Property(e => e.CompanyName)
                     .IsRequired()
-                    .HasColumnType("varchar(40)")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
+                    .HasMaxLength(40);
 
-                entity.Property(e => e.Phone)
-                    .HasColumnType("varchar(24)")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
+                entity.Property(e => e.Phone).HasMaxLength(24);
             });
 
             modelBuilder.Entity<Supplier>(entity =>
@@ -350,61 +280,29 @@ namespace Northwind.Data
 
                 entity.Property(e => e.SupplierId).HasColumnName("SupplierID");
 
-                entity.Property(e => e.Address)
-                    .HasColumnType("varchar(60)")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
+                entity.Property(e => e.Address).HasMaxLength(60);
 
-                entity.Property(e => e.City)
-                    .HasColumnType("varchar(15)")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
+                entity.Property(e => e.City).HasMaxLength(15);
 
                 entity.Property(e => e.CompanyName)
                     .IsRequired()
-                    .HasColumnType("varchar(40)")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
+                    .HasMaxLength(40);
 
-                entity.Property(e => e.ContactName)
-                    .HasColumnType("varchar(30)")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
+                entity.Property(e => e.ContactName).HasMaxLength(30);
 
-                entity.Property(e => e.ContactTitle)
-                    .HasColumnType("varchar(30)")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
+                entity.Property(e => e.ContactTitle).HasMaxLength(30);
 
-                entity.Property(e => e.Country)
-                    .HasColumnType("varchar(15)")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
+                entity.Property(e => e.Country).HasMaxLength(15);
 
-                entity.Property(e => e.Fax)
-                    .HasColumnType("varchar(24)")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
+                entity.Property(e => e.Fax).HasMaxLength(24);
 
-                entity.Property(e => e.HomePage)
-                    .HasColumnType("longtext")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
+                entity.Property(e => e.HomePage).HasColumnType("longtext");
 
-                entity.Property(e => e.Phone)
-                    .HasColumnType("varchar(24)")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
+                entity.Property(e => e.Phone).HasMaxLength(24);
 
-                entity.Property(e => e.PostalCode)
-                    .HasColumnType("varchar(10)")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
+                entity.Property(e => e.PostalCode).HasMaxLength(10);
 
-                entity.Property(e => e.Region)
-                    .HasColumnType("varchar(15)")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
+                entity.Property(e => e.Region).HasMaxLength(15);
             });
 
             OnModelCreatingPartial(modelBuilder);
