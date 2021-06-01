@@ -45,6 +45,27 @@ namespace Northwind_API.Controllers
         }
 
         // GET: api/Employee
+        [HttpGet("/GetEmployeeUsingExplicitLoading")]
+        public async Task<ActionResult<Employee>> GetEmployeeUsingExplicitLoading(int employeeId)
+        {
+            //Linq Query
+            // return await _context.Employees
+            //                     .Include(e => e.Orders.Where(o => o.ShipCountry == "brazil"))
+            //                     .Where(e => e.EmployeeId == employeeId)
+            //                     .ToListAsync();
+
+            var employee = _context.Employees.Single(e => e.EmployeeId == employeeId);
+
+            _context.Entry(employee)
+                    .Collection(e => e.Orders)
+                    .Query()
+                    .Where(o => o.ShipCountry == "brazil")
+                    .Load();
+
+            return await Task.FromResult(employee);
+        }
+
+        // GET: api/Employee
         [HttpGet("/GetEmployeesUsingQueryExpression")]
         public async Task<ActionResult<IEnumerable<String>>> GetEmployeesUsingQueryExpression()
         {
