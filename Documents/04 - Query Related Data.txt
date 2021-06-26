@@ -1,0 +1,35 @@
+=> Related Data & Serialization
+    This needs to get covered in the beginning as you can show related JSON in the results anyways
+    Add below line in startup class to show related entities in web api calls
+
+    .AddNewtonsoftJson(options =>
+                options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+
+=> Overview
+    => Writing simple queries using LINQ
+
+=> Link Query Expression
+    https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/basic-linq-query-operations
+    => I was managed to write most of the queries except the group by query
+    => You need to convert you DbSet<> into List<> in order to use GroupBy
+
+=> Eager Loading => Done
+    I have done this before 
+    I would add little bit of query expression to explore the options
+=> Explicit Loading => Done
+    I have done this before 
+    I don't think there is anything new that I can do
+
+=> Lazy Loading =>
+    I was doing this for the first time
+    I had to add package 
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="5.0.7" />
+    Also need to mention that in the Startup.cs 
+        options.UseLazyLoadingProxies();
+    
+    The Curveball => 
+    The bottom line is you can't return the virtual properties the database gets called when they are accessed
+    It acts weird so I asked a question on StackOverflow.com
+    https://stackoverflow.com/questions/68142198/asp-net-core-web-api-can-not-return-results-extracted-using-ef-core-lazy-loading
+
+

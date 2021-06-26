@@ -25,4 +25,16 @@ dotnet ef dbcontext scaffold Name=Northwind_MySQL Pomelo.EntityFrameworkCore.MyS
 
 -------------------------------------------
 
+MySql.EntityFrameworkCore
+
 dotnet ef dbcontext scaffold Name=Northwind_MySQL MySql.EntityFrameworkCore --output-dir Models --context-dir Data --namespace Northwind.Models --context-namespace Northwind.Data -f --no-onconfiguring
+
+
+Pomelo.EntityFrameworkCore.MySql
+
+dotnet ef dbcontext scaffold Name=Northwind_MySQL Pomelo.EntityFrameworkCore.MySql --output-dir Models --context-dir Data --namespace Northwind.Models --context-namespace Northwind.Data -f --no-onconfiguring
+
+
+-------------------------------------------
+
+MySql.EntityFrameworkCore Vs Pomelo.EntityFrameworkCore.MySql

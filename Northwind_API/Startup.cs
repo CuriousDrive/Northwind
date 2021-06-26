@@ -28,13 +28,16 @@ namespace Northwind_API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers().AddNewtonsoftJson(options =>
+            services
+            .AddControllers()
+            .AddNewtonsoftJson(options =>
                 options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
             
             services.AddDbContext<NorthwindContext>(
                 options =>
                 {
-                    options.UseMySql(Configuration.GetConnectionString("Northwind_MySQL"), Microsoft.EntityFrameworkCore.ServerVersion.FromString("8.0.23-mysql"));
+                    options.UseMySql(Configuration.GetConnectionString("Northwind_MySQL"), Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.23-mysql"));
+                    options.UseLazyLoadingProxies();
                     options.LogTo(Console.WriteLine, LogLevel.Information);
                 }
             );

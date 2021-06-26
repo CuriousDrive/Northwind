@@ -29,9 +29,15 @@ namespace Northwind.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.HasCharSet("utf8mb4")
+                .UseCollation("utf8mb4_0900_ai_ci");
+
             modelBuilder.Entity<Category>(entity =>
             {
                 entity.ToTable("categories");
+
+                entity.HasCharSet("utf8")
+                    .UseCollation("utf8_general_ci");
 
                 entity.HasIndex(e => e.CategoryName, "CategoryName")
                     .IsUnique();
@@ -41,15 +47,14 @@ namespace Northwind.Data
                 entity.Property(e => e.CategoryName)
                     .IsRequired()
                     .HasMaxLength(15);
-
-                entity.Property(e => e.Description).HasColumnType("longtext");
-
-                entity.Property(e => e.Picture).HasColumnType("longblob");
             });
 
             modelBuilder.Entity<Customer>(entity =>
             {
                 entity.ToTable("customers");
+
+                entity.HasCharSet("utf8")
+                    .UseCollation("utf8_general_ci");
 
                 entity.HasIndex(e => e.City, "City");
 
@@ -79,10 +84,6 @@ namespace Northwind.Data
 
                 entity.Property(e => e.Fax).HasMaxLength(24);
 
-                entity.Property(e => e.Image).HasColumnType("longblob");
-
-                entity.Property(e => e.ImageThumbnail).HasColumnType("longblob");
-
                 entity.Property(e => e.Phone).HasMaxLength(24);
 
                 entity.Property(e => e.PostalCode).HasMaxLength(10);
@@ -94,6 +95,9 @@ namespace Northwind.Data
             {
                 entity.ToTable("employees");
 
+                entity.HasCharSet("utf8")
+                    .UseCollation("utf8_general_ci");
+
                 entity.HasIndex(e => e.LastName, "LastName");
 
                 entity.HasIndex(e => e.PostalCode, "PostalCode");
@@ -101,6 +105,8 @@ namespace Northwind.Data
                 entity.Property(e => e.EmployeeId).HasColumnName("EmployeeID");
 
                 entity.Property(e => e.Address).HasMaxLength(60);
+
+                entity.Property(e => e.BirthDate).HasColumnType("datetime");
 
                 entity.Property(e => e.City).HasMaxLength(15);
 
@@ -112,15 +118,13 @@ namespace Northwind.Data
                     .IsRequired()
                     .HasMaxLength(10);
 
+                entity.Property(e => e.HireDate).HasColumnType("datetime");
+
                 entity.Property(e => e.HomePhone).HasMaxLength(24);
 
                 entity.Property(e => e.LastName)
                     .IsRequired()
                     .HasMaxLength(20);
-
-                entity.Property(e => e.Notes).HasColumnType("longtext");
-
-                entity.Property(e => e.Photo).HasColumnType("longblob");
 
                 entity.Property(e => e.PostalCode).HasMaxLength(10);
 
@@ -134,6 +138,9 @@ namespace Northwind.Data
             modelBuilder.Entity<Order>(entity =>
             {
                 entity.ToTable("orders");
+
+                entity.HasCharSet("utf8")
+                    .UseCollation("utf8_general_ci");
 
                 entity.HasIndex(e => e.CustomerId, "FK_CustomersOrders");
 
@@ -154,8 +161,12 @@ namespace Northwind.Data
                 entity.Property(e => e.EmployeeId).HasColumnName("EmployeeID");
 
                 entity.Property(e => e.Freight)
-                    .HasColumnType("decimal(19,4)")
+                    .HasPrecision(19, 4)
                     .HasDefaultValueSql("'0.0000'");
+
+                entity.Property(e => e.OrderDate).HasColumnType("datetime");
+
+                entity.Property(e => e.RequiredDate).HasColumnType("datetime");
 
                 entity.Property(e => e.ShipAddress).HasMaxLength(60);
 
@@ -168,6 +179,8 @@ namespace Northwind.Data
                 entity.Property(e => e.ShipPostalCode).HasMaxLength(10);
 
                 entity.Property(e => e.ShipRegion).HasMaxLength(15);
+
+                entity.Property(e => e.ShippedDate).HasColumnType("datetime");
 
                 entity.HasOne(d => d.Customer)
                     .WithMany(p => p.Orders)
@@ -187,6 +200,9 @@ namespace Northwind.Data
 
                 entity.ToTable("orderdetails");
 
+                entity.HasCharSet("utf8")
+                    .UseCollation("utf8_general_ci");
+
                 entity.HasIndex(e => e.OrderId, "FK_OrdersOrderDetails");
 
                 entity.HasIndex(e => e.ProductId, "FK_ProductsOrderDetails");
@@ -199,7 +215,7 @@ namespace Northwind.Data
 
                 entity.Property(e => e.Quantity).HasDefaultValueSql("'1'");
 
-                entity.Property(e => e.UnitPrice).HasColumnType("decimal(19,4)");
+                entity.Property(e => e.UnitPrice).HasPrecision(19, 4);
 
                 entity.HasOne(d => d.Order)
                     .WithMany(p => p.Orderdetails)
@@ -217,6 +233,9 @@ namespace Northwind.Data
             modelBuilder.Entity<Product>(entity =>
             {
                 entity.ToTable("products");
+
+                entity.HasCharSet("utf8")
+                    .UseCollation("utf8_general_ci");
 
                 entity.HasIndex(e => e.CategoryId, "FK_ProductsCategories");
 
@@ -239,7 +258,7 @@ namespace Northwind.Data
                 entity.Property(e => e.SupplierId).HasColumnName("SupplierID");
 
                 entity.Property(e => e.UnitPrice)
-                    .HasColumnType("decimal(19,4)")
+                    .HasPrecision(19, 4)
                     .HasDefaultValueSql("'0.0000'");
 
                 entity.Property(e => e.UnitsInStock).HasDefaultValueSql("'0'");
@@ -261,6 +280,9 @@ namespace Northwind.Data
             {
                 entity.ToTable("shippers");
 
+                entity.HasCharSet("utf8")
+                    .UseCollation("utf8_general_ci");
+
                 entity.Property(e => e.ShipperId).HasColumnName("ShipperID");
 
                 entity.Property(e => e.CompanyName)
@@ -273,6 +295,9 @@ namespace Northwind.Data
             modelBuilder.Entity<Supplier>(entity =>
             {
                 entity.ToTable("suppliers");
+
+                entity.HasCharSet("utf8")
+                    .UseCollation("utf8_general_ci");
 
                 entity.HasIndex(e => e.CompanyName, "CompanyName");
 
@@ -295,8 +320,6 @@ namespace Northwind.Data
                 entity.Property(e => e.Country).HasMaxLength(15);
 
                 entity.Property(e => e.Fax).HasMaxLength(24);
-
-                entity.Property(e => e.HomePage).HasColumnType("longtext");
 
                 entity.Property(e => e.Phone).HasMaxLength(24);
 

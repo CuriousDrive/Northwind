@@ -65,6 +65,17 @@ namespace Northwind_API.Controllers
             return await Task.FromResult(employee);
         }
 
+        // GET: api/Supplier
+        [HttpGet("/GetSupplierUsingLazyLoading")]
+        public async Task<ActionResult<Object>> GetSupplierUsingLazyLoading()
+        {
+            var products = _context.Products.ToList();
+            var companyName = products.Last().Supplier.CompanyName;
+
+            return await Task.FromResult(companyName);
+            //return await Task.FromResult(new Supplier());
+        }
+
         // GET: api/Employee
         [HttpGet("/GetEmployeesUsingQueryExpression")]
         public async Task<ActionResult<IEnumerable<String>>> GetEmployeesUsingQueryExpression()
