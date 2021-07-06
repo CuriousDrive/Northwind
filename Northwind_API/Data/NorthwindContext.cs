@@ -18,6 +18,7 @@ namespace Northwind.Data
         {
         }
 
+        public virtual DbSet<AlphabeticalListOfProduct> AlphabeticalListOfProducts { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<Employee> Employees { get; set; }
@@ -31,6 +32,48 @@ namespace Northwind.Data
         {
             modelBuilder.HasCharSet("utf8mb4")
                 .UseCollation("utf8mb4_0900_ai_ci");
+
+            modelBuilder.Entity<AlphabeticalListOfProduct>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToView("alphabetical_list_of_products");
+
+                entity.Property(e => e.CategoryId).HasColumnName("CategoryID");
+
+                entity.Property(e => e.CategoryName)
+                    .IsRequired()
+                    .HasMaxLength(15)
+                    .UseCollation("utf8_general_ci")
+                    .HasCharSet("utf8");
+
+                entity.Property(e => e.Discontinued).HasDefaultValueSql("'0'");
+
+                entity.Property(e => e.ProductId).HasColumnName("ProductID");
+
+                entity.Property(e => e.ProductName)
+                    .IsRequired()
+                    .HasMaxLength(40)
+                    .UseCollation("utf8_general_ci")
+                    .HasCharSet("utf8");
+
+                entity.Property(e => e.QuantityPerUnit)
+                    .HasMaxLength(20)
+                    .UseCollation("utf8_general_ci")
+                    .HasCharSet("utf8");
+
+                entity.Property(e => e.ReorderLevel).HasDefaultValueSql("'0'");
+
+                entity.Property(e => e.SupplierId).HasColumnName("SupplierID");
+
+                entity.Property(e => e.UnitPrice)
+                    .HasPrecision(19, 4)
+                    .HasDefaultValueSql("'0.0000'");
+
+                entity.Property(e => e.UnitsInStock).HasDefaultValueSql("'0'");
+
+                entity.Property(e => e.UnitsOnOrder).HasDefaultValueSql("'0'");
+            });
 
             modelBuilder.Entity<Category>(entity =>
             {

@@ -16,6 +16,7 @@
 => Eager Loading => Done
     I have done this before 
     I would add little bit of query expression to explore the options
+
 => Explicit Loading => Done
     I have done this before 
     I don't think there is anything new that I can do
