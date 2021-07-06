@@ -1,0 +1,11 @@
+Observations 
+
+1. If you use "EF Core Power tool" extension then you can generate models for 
+    => Tables
+    => Views
+    => Stored Procedures
+    => Functions
+
+2. If you are reverse engineering using "dotnet ef dbcontext scaffold"
+    => Tables
+    => Views

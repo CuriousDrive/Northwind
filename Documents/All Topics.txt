@@ -1,3 +1,5 @@
+------------------------- BEGINNER SECTION -------------------------
+
 1. Reverse Engineering
     => MySql -> DONE
     => SQL Server -> DONE
@@ -8,15 +10,17 @@
     => Configuration and Initialization -> DONE
     => Create and drop APIs
 
-2.5 => EF Core Tools
-    => Check out GUI for Visual Studio -> DONE
-
 3. Controllers
     => Creating Controllers from scratch -> DONE
     => Creating from command line -> DONE
     => Creating from Visual Studio -> DONE
 
-4. Query Data
+4. Stored Procedures, Views & Functions
+    => Models get generated for views, so this is easy to perform
+    => Need to generate custom models and mapping them to Procedure & Functions
+    => Use Raw SQL Queries 
+
+5. Query Data
     => Loading Related Data 
         => Overview
         => Link Query Expression
@@ -24,19 +28,8 @@
         => Explicit Loading
         => Lazy Loading
         => Related Data & Serialization
-    => Client vs Server evaluations
-    => Tracking vs no-Tracking
-    => Split Queries
-    => Complex Query Operators
-    => Raw SQL Queries
-    => Database Functions
-    => User-defined functions mapping
-    => Global Query Filters
-    => Query Tags
-    => Comparisons with null values in the Queries
-    => How Queries Work
 
-5. Save Data
+6. Save Data
     => Basic Save
     => Related Data
     => Cascade Delete
@@ -44,7 +37,19 @@
     => Transactions
     => Disconnected Entities
 
-6. Tracking
+7. Query Data - Deep Dive
+    => Client vs Server evaluations
+    => Tracking vs no-Tracking
+    => Split Queries
+    => Complex Query Operators
+    => Global Query Filters
+    => Query Tags
+    => Comparisons with null values in the Queries
+    => How Queries Work
+
+------------------------- Advanced SECTION -------------------------
+
+7. Tracking
     => Explicit Tracking Entities
     => Accessing Tracked Entities
     => Chaging foreign keys & navigations
@@ -52,7 +57,7 @@
     => Additional Change & tracking features
     => Change tracker debugging
 
-7. Logging
+8. Logging
     => Simple Logging
     => Microsoft.Extensions.Logging
     => Events
@@ -60,16 +65,18 @@
     => Diagnostic Listners
     => Event Counters
 
-8. Performance
+9. Performance
     => Performance diagnosis
     => Efficient querying
     => Efficient updating
     => Modeling for performance
     => Advanced
 
-9. Testing
+10. Testing
     => Testing code that uses EF Core
     => EF Core testing sample
     => Sharing databases between tests
     => Test with SQLite
     => Test with InMemory
+
+------------------------- End -------------------------
