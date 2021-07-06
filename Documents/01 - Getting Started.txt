@@ -22,3 +22,5 @@ using(var dbContext = new Northwind.Contexts.NorthwindContext())
 {
     return dbContext.Customers.ToList();
 }
+
+dotnet ef dbcontext scaffold "Data Source=.\sqlexpress;Initial Catalog=Northwind;User ID=sa;Password=root" Microsoft.EntityFrameworkCore.SqlServer --output-dir Models -f
