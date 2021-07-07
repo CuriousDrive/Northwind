@@ -8,7 +8,6 @@
     => Exploring Different Parameters -> DONE
     => Modifying Database Columns -> DONE
     => Configuration and Initialization -> DONE
-    => Create and drop APIs
 
 3. Controllers
     => Creating Controllers from scratch -> DONE
@@ -46,6 +45,7 @@
     => Query Tags
     => Comparisons with null values in the Queries
     => How Queries Work
+    => Create and drop APIs
 
 ------------------------- Advanced SECTION -------------------------
 
