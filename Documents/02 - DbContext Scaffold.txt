@@ -20,8 +20,8 @@ dotnet ef dbcontext scaffold Name=Northwind_MySQL Pomelo.EntityFrameworkCore.MyS
 => using --use-database-names=> this takes literally same table names and column names from the database
 dotnet ef dbcontext scaffold Name=Northwind_MySQL Pomelo.EntityFrameworkCore.MySql --output-dir Models --context-dir Data --namespace Northwind.Models --context-namespace Northwind.Data -f --use-database-names
 
-=> using --no-onconfiguring => you will have to manually configure the connection in this case
-dotnet ef dbcontext scaffold Name=Northwind_MySQL Pomelo.EntityFrameworkCore.MySql --output-dir Models --context-dir Data --namespace Northwind.Models --context-namespace Northwind.Data -f --no-onconfiguring
+=> using --no-onconfiguring => 
+dotnet ef dbcontext scaffold Name=Northwind_MySQL Pomelo.EntityFrameworkCore.MySql --output-dir Models --context-dir Data --namespace Northwind.Models --context-namespace Northwind.Data -context NorthwindContext -f --no-onconfiguring
 
 -------------------------------------------
 
